@@ -50,7 +50,7 @@ def homepage():
         fname = ufile.filename
         ftype = fname.split('.')[1] #Mengidentifikasi tipe file
         storage.child(ftype+'/'+fname).put(ufile) #Memasukkan file ke storage
-        flink = storage.child(ftype+'/'+fname).get_url(None) #Mendapatkan URL dari file
+        flink = storage.child(ftype+'/'+fname).get_url() #Mendapatkan URL dari file
         # Session untuk passing data dari halaman satu ke halaman lain
         session['flink'] = flink 
         session['ftype'] = ftype
@@ -383,6 +383,5 @@ def testpage(keyId):
         return render_template('input_user2.html')
 
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5000)
